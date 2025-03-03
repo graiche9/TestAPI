@@ -1,0 +1,22 @@
+piplene {
+    agent {
+        docker{
+            image 'postman/newman'
+            args "--entrypoints=''"
+        }
+        }
+}
+stages {
+    stage('verifier la version de newman'){
+        steps{
+            sh 'newman --version'
+        }
+    }
+
+    stage('test API'){
+        steps{
+        sh 'newman run collections/Collection 1.postman_collection.json '
+
+        }
+    }
+}

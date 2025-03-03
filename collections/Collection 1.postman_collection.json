@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "9ff9002a-9088-4797-977e-1f59f226196b",
+		"name": "Collection 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42584517",
+		"_collection_link": "https://test-1-4893.postman.co/workspace/Test2~20288678-669c-4395-a248-a204aa805938/collection/42584517-9ff9002a-9088-4797-977e-1f59f226196b?action=share&source=collection_link&creator=42584517"
+	},
+	"item": [
+		{
+			"name": "Request 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Statut 200 OK\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"La réponse contient une liste d'utilisateurs\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data).to.be.an('array');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=1",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let flag = true; \r",
+							"\r",
+							"(flag ? pm.test : pm.test.skip)(\"Vérifier que le statut est 200\", function () {\r",
+							"    pm.response.to.have.status(400); \r",
+							"});\r",
+							"\r",
+							"\r",
+							"(flag ? pm.test : pm.test.skip)(\"La réponse contient une liste d'utilisateurs\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data).to.be.an('array');\r",
+							"    pm.expect(true).to.be.true; \r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users?page=1",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
