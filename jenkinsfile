@@ -1,22 +1,22 @@
 pipeline {
     agent {
-        docker{
+        docker {
             image 'postman/newman'
-            args "--entrypoints=''"
+            args "--entrypoint=''"
         }
     }
-}
-stages {
-    stage('verifier la version de newman'){
-        steps{
-            sh 'newman --version'
+    
+    stages {
+        stage('verifier la version de newman') {
+            steps {
+                sh 'newman --version'
+            }
         }
-    }
 
-    stage('test API'){
-        steps{
-        sh 'newman run collections/Collection 1.postman_collection.json '
-
+        stage('test API') {
+            steps {
+                sh 'newman run collections/Collection1.postman_collection.json'
+            }
         }
     }
 }
