@@ -1,10 +1,10 @@
-piplene {
+pipline {
     agent {
         docker{
             image 'postman/newman'
             args "--entrypoints=''"
         }
-        }
+    }
 }
 stages {
     stage('verifier la version de newman'){
